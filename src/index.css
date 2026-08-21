@@ -1,0 +1,1103 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background: #f8f9fa;
+  color: #1a1d21;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.dark body {
+  background: #424250;
+  color: #e5e7eb;
+}
+
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum";
+}
+
+@keyframes pop {
+  0% {
+    transform: scale(1);
+  }
+  40% {
+    transform: scale(1.18);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+.animate-pop {
+  animation: pop 0.28s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes shake {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-3px);
+  }
+  75% {
+    transform: translateX(3px);
+  }
+}
+.animate-shake {
+  animation: shake 0.25s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.animate-fade-in {
+  animation: fadeIn 0.2s ease-out;
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+.animate-scale-in {
+  animation: scaleIn 0.18s ease-out;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-6px) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+.animate-slide-down {
+  transform-origin: top left;
+  animation: slideDown 0.16s ease-out;
+}
+
+@keyframes wiggle {
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(-8deg);
+  }
+  75% {
+    transform: rotate(8deg);
+  }
+}
+.animate-wiggle {
+  animation: wiggle 0.5s ease-in-out;
+}
+
+@keyframes bounceIn {
+  0% {
+    opacity: 0;
+    transform: translateY(20px) scale(0.8);
+  }
+  60% {
+    opacity: 1;
+    transform: translateY(-4px) scale(1.05);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+.animate-bounce-in {
+  animation: bounceIn 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes editPulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(49, 196, 141, 0);
+  }
+  50% {
+    box-shadow: 0 0 0 4px rgba(49, 196, 141, 0.15);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(49, 196, 141, 0);
+  }
+}
+.animate-edit-pulse {
+  animation: editPulse 0.6s ease-out;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #d1d5db;
+  border-radius: 4px;
+}
+.dark ::-webkit-scrollbar-thumb {
+  background: #4b5563;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #9ca3af;
+}
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: #6b7280;
+}
+
+.dragging-active * {
+  user-select: none !important;
+}
+
+.floating-window {
+  box-shadow: 0 20px 60px -10px rgba(0, 0, 0, 0.25),
+    0 8px 24px -8px rgba(0, 0, 0, 0.15);
+}
+
+/* === Mascot mood animations (legacy) === */
+
+@keyframes sleepy-bounce {
+  0%,
+  100% {
+    transform: translateY(0) rotate(-3deg);
+  }
+  25% {
+    transform: translateY(-12px) rotate(3deg);
+  }
+  50% {
+    transform: translateY(-4px) rotate(-2deg);
+  }
+  75% {
+    transform: translateY(-8px) rotate(2deg);
+  }
+}
+.animate-mood-sleepy {
+  animation: sleepy-bounce 1.8s ease-in-out infinite;
+}
+
+@keyframes jaabooq-cool {
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  20% {
+    transform: translateY(-2px) rotate(-1deg);
+  }
+  40% {
+    transform: translateX(3px) rotate(1deg);
+  }
+  60% {
+    transform: translateY(-1px) rotate(-1deg);
+  }
+  80% {
+    transform: translateX(-3px) rotate(1deg);
+  }
+}
+.animate-mood-jaabooq {
+  animation: jaabooq-cool 3s ease-in-out infinite;
+}
+
+@keyframes abu-addad-nod {
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  30% {
+    transform: translateY(2px) rotate(2deg);
+  }
+  60% {
+    transform: translateY(-1px) rotate(-1deg);
+  }
+}
+.animate-mood-abu-addad {
+  animation: abu-addad-nod 2.5s ease-in-out infinite;
+}
+
+@keyframes moallem-float {
+  0%,
+  100% {
+    transform: translateY(0) scale(1);
+  }
+  50% {
+    transform: translateY(-10px) scale(1.03);
+  }
+}
+.animate-mood-moallem-addood {
+  animation: moallem-float 2.8s ease-in-out infinite;
+}
+
+@keyframes addadgy-wiggle {
+  0%,
+  100% {
+    transform: rotate(0deg) translateY(0);
+  }
+  25% {
+    transform: rotate(-6deg) translateY(-3px);
+  }
+  75% {
+    transform: rotate(6deg) translateY(-3px);
+  }
+}
+.animate-mood-addadgy {
+  animation: addadgy-wiggle 1.2s ease-in-out infinite;
+}
+
+/* =========================================== */
+/* === NEW CHARACTER ANIMATION SYSTEM === */
+/* =========================================== */
+
+/* Reusable base animations */
+@keyframes char-breathe {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.02);
+  }
+}
+@keyframes char-blink {
+  0%,
+  92%,
+  100% {
+    transform: scaleY(1);
+  }
+  95% {
+    transform: scaleY(0.05);
+  }
+}
+@keyframes char-tiny-move {
+  0%,
+  100% {
+    transform: translateY(0) rotate(0);
+  }
+  50% {
+    transform: translateY(-2px) rotate(0.5deg);
+  }
+}
+@keyframes char-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+/* --- IDLE ANIMATIONS --- */
+
+/* الشمقمق - restless idle */
+.anim-char-sleepy-idle {
+  animation: sleepy-idle 1.6s ease-in-out infinite;
+  transform-origin: bottom center;
+}
+@keyframes sleepy-idle {
+  0%,
+  100% {
+    transform: translateY(0) rotate(-2deg) scale(1);
+  }
+  25% {
+    transform: translateY(-3px) rotate(2deg) scale(1.01);
+  }
+  50% {
+    transform: translateY(-1px) rotate(-1deg);
+  }
+  75% {
+    transform: translateY(-4px) rotate(1.5deg) scale(1.01);
+  }
+}
+
+/* الجعبوق - looking around idle */
+.anim-char-jaabooq-idle {
+  animation: jaabooq-idle 3.5s ease-in-out infinite;
+  transform-origin: bottom center;
+}
+@keyframes jaabooq-idle {
+  0%,
+  100% {
+    transform: translateX(0) rotate(0);
+  }
+  20% {
+    transform: translateX(2px) rotate(1deg);
+  }
+  40% {
+    transform: translateX(-2px) rotate(-1deg);
+  }
+  60% {
+    transform: translateY(-2px) rotate(0deg);
+  }
+  80% {
+    transform: translateX(1px) rotate(0.5deg);
+  }
+}
+
+/* أبو عداد - serious slow nod */
+.anim-char-abu-addad-idle {
+  animation: abu-addad-idle 3s ease-in-out infinite;
+  transform-origin: bottom center;
+}
+@keyframes abu-addad-idle {
+  0%,
+  100% {
+    transform: translateY(0) rotate(0);
+  }
+  40% {
+    transform: translateY(2px) rotate(1deg);
+  }
+  70% {
+    transform: translateY(-1px) rotate(-0.5deg);
+  }
+}
+
+/* المعلم عدّود - wise floating */
+.anim-char-moallem-idle {
+  animation: moallem-idle 3s ease-in-out infinite;
+  transform-origin: bottom center;
+}
+@keyframes moallem-idle {
+  0%,
+  100% {
+    transform: translateY(0) scale(1);
+  }
+  50% {
+    transform: translateY(-8px) scale(1.02);
+  }
+}
+
+/* عدّادجي - tech wiggle */
+.anim-char-addadgy-idle {
+  animation: addadgy-idle 1.4s ease-in-out infinite;
+  transform-origin: bottom center;
+}
+@keyframes addadgy-idle {
+  0%,
+  100% {
+    transform: rotate(0) translateY(0);
+  }
+  25% {
+    transform: rotate(-3deg) translateY(-2px);
+  }
+  75% {
+    transform: rotate(3deg) translateY(-2px);
+  }
+}
+
+/* --- INCREASE REACTIONS (short, purposeful) --- */
+
+/* الشمقمق - excited jump */
+.anim-char-sleepy-increase {
+  animation: sleepy-increase 0.45s cubic-bezier(0.34, 1.56, 0.64, 1);
+  transform-origin: bottom center;
+}
+@keyframes sleepy-increase {
+  0% {
+    transform: translateY(0) scale(1) rotate(0);
+  }
+  40% {
+    transform: translateY(-18px) scale(1.1) rotate(-5deg);
+  }
+  70% {
+    transform: translateY(-4px) scale(1.05) rotate(4deg);
+  }
+  100% {
+    transform: translateY(0) scale(1) rotate(0);
+  }
+}
+
+/* الجعبوق - approving nod */
+.anim-char-jaabooq-increase {
+  animation: jaabooq-increase 0.4s ease-out;
+  transform-origin: bottom center;
+}
+@keyframes jaabooq-increase {
+  0% {
+    transform: rotate(0) translateY(0);
+  }
+  40% {
+    transform: rotate(3deg) translateY(-2px);
+  }
+  70% {
+    transform: rotate(-1deg) translateY(1px);
+  }
+  100% {
+    transform: rotate(0) translateY(0);
+  }
+}
+
+/* أبو عداد - measured nod */
+.anim-char-abu-addad-increase {
+  animation: abu-addad-increase 0.5s ease-out;
+  transform-origin: bottom center;
+}
+@keyframes abu-addad-increase {
+  0% {
+    transform: translateY(0) rotate(0);
+  }
+  35% {
+    transform: translateY(3px) rotate(2deg);
+  }
+  65% {
+    transform: translateY(-1px) rotate(-1deg);
+  }
+  100% {
+    transform: translateY(0) rotate(0);
+  }
+}
+
+/* المعلم عدّود - calm approval */
+.anim-char-moallem-increase {
+  animation: moallem-increase 0.5s ease-out;
+  transform-origin: bottom center;
+}
+@keyframes moallem-increase {
+  0% {
+    transform: translateY(0) scale(1);
+  }
+  50% {
+    transform: translateY(-4px) scale(1.03);
+  }
+  100% {
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* عدّادجي - excited tech shake */
+.anim-char-addadgy-increase {
+  animation: addadgy-increase 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+  transform-origin: bottom center;
+}
+@keyframes addadgy-increase {
+  0% {
+    transform: rotate(0) translateY(0) scale(1);
+  }
+  50% {
+    transform: rotate(-8deg) translateY(-5px) scale(1.05);
+  }
+  100% {
+    transform: rotate(0) translateY(0) scale(1);
+  }
+}
+
+/* --- DECREASE REACTIONS --- */
+
+/* الشمقمق - confused */
+.anim-char-sleepy-decrease {
+  animation: sleepy-decrease 0.5s ease-in-out;
+  transform-origin: bottom center;
+}
+@keyframes sleepy-decrease {
+  0% {
+    transform: rotate(0);
+  }
+  25% {
+    transform: rotate(-6deg) translateX(-2px);
+  }
+  50% {
+    transform: rotate(4deg) translateX(2px);
+  }
+  75% {
+    transform: rotate(-2deg);
+  }
+  100% {
+    transform: rotate(0);
+  }
+}
+
+/* الجعبوق - suspicious lean */
+.anim-char-jaabooq-decrease {
+  animation: jaabooq-decrease 0.5s ease-out;
+  transform-origin: bottom center;
+}
+@keyframes jaabooq-decrease {
+  0% {
+    transform: translateX(0) rotate(0);
+  }
+  40% {
+    transform: translateX(-4px) rotate(-3deg);
+  }
+  70% {
+    transform: translateX(2px) rotate(1deg);
+  }
+  100% {
+    transform: translateX(0) rotate(0);
+  }
+}
+
+/* أبو عداد - thoughtful */
+.anim-char-abu-addad-decrease {
+  animation: abu-addad-decrease 0.55s ease-out;
+  transform-origin: bottom center;
+}
+@keyframes abu-addad-decrease {
+  0% {
+    transform: rotate(0);
+  }
+  30% {
+    transform: rotate(-2deg) translateY(1px);
+  }
+  60% {
+    transform: rotate(1deg) translateY(-1px);
+  }
+  100% {
+    transform: rotate(0);
+  }
+}
+
+/* المعلم عدّود - accepting */
+.anim-char-moallem-decrease {
+  animation: moallem-decrease 0.5s ease-out;
+  transform-origin: bottom center;
+}
+@keyframes moallem-decrease {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(2px) scale(0.98);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+/* عدّادجي - concerned tech */
+.anim-char-addadgy-decrease {
+  animation: addadgy-decrease 0.4s ease-out;
+  transform-origin: bottom center;
+}
+@keyframes addadgy-decrease {
+  0% {
+    transform: rotate(0);
+  }
+  30% {
+    transform: rotate(5deg) translateX(2px);
+  }
+  60% {
+    transform: rotate(-2deg);
+  }
+  100% {
+    transform: rotate(0);
+  }
+}
+
+/* --- RESET REACTIONS (dramatic) --- */
+
+/* الشمقمق - dramatic shock */
+.anim-char-sleepy-reset {
+  animation: sleepy-reset 0.8s cubic-bezier(0.36, 0, 0.66, -0.56);
+  transform-origin: bottom center;
+}
+@keyframes sleepy-reset {
+  0% {
+    transform: translateY(0) scale(1) rotate(0);
+  }
+  20% {
+    transform: translateY(-20px) scale(1.15) rotate(-10deg);
+  }
+  40% {
+    transform: translateY(5px) scale(0.9) rotate(8deg);
+  }
+  60% {
+    transform: translateY(-8px) scale(1.05) rotate(-4deg);
+  }
+  100% {
+    transform: translateY(0) scale(1) rotate(0);
+  }
+}
+
+/* الجعبوق - dramatic WHAT */
+.anim-char-jaabooq-reset {
+  animation: jaabooq-reset 0.7s ease-in-out;
+  transform-origin: bottom center;
+}
+@keyframes jaabooq-reset {
+  0% {
+    transform: translateY(0) rotate(0) scale(1);
+  }
+  25% {
+    transform: translateY(-12px) rotate(-5deg) scale(1.08);
+  }
+  50% {
+    transform: translateY(4px) rotate(6deg) scale(0.97);
+  }
+  75% {
+    transform: translateY(-2px) rotate(-2deg);
+  }
+  100% {
+    transform: translateY(0) rotate(0) scale(1);
+  }
+}
+
+/* أبو عداد - accepting but dramatic */
+.anim-char-abu-addad-reset {
+  animation: abu-addad-reset 0.75s ease-out;
+  transform-origin: bottom center;
+}
+@keyframes abu-addad-reset {
+  0% {
+    transform: scale(1);
+  }
+  30% {
+    transform: scale(1.08) translateY(-5px);
+  }
+  60% {
+    transform: scale(0.96) translateY(3px);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* المعلم عدّود - dramatic disappointment */
+.anim-char-moallem-reset {
+  animation: moallem-reset 0.8s ease-in-out;
+  transform-origin: bottom center;
+}
+@keyframes moallem-reset {
+  0% {
+    transform: translateY(0) scale(1);
+  }
+  30% {
+    transform: translateY(8px) scale(0.92);
+  }
+  60% {
+    transform: translateY(-4px) scale(0.98);
+  }
+  100% {
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* عدّادجي - system crash */
+.anim-char-addadgy-reset {
+  animation: addadgy-reset 0.7s ease-in-out;
+  transform-origin: bottom center;
+}
+@keyframes addadgy-reset {
+  0% {
+    transform: rotate(0) scale(1);
+  }
+  20% {
+    transform: rotate(10deg) translateY(-4px) scale(1.1);
+  }
+  40% {
+    transform: rotate(-8deg) translateY(3px) scale(0.95);
+  }
+  60% {
+    transform: rotate(5deg) scale(1.03);
+  }
+  100% {
+    transform: rotate(0) scale(1);
+  }
+}
+
+/* --- MILESTONE REACTIONS (celebration) --- */
+
+/* الشمقمق - wild celebration */
+.anim-char-sleepy-milestone {
+  animation: sleepy-milestone 0.9s cubic-bezier(0.34, 1.56, 0.64, 1);
+  transform-origin: bottom center;
+}
+@keyframes sleepy-milestone {
+  0% {
+    transform: translateY(0) scale(1) rotate(0);
+  }
+  20% {
+    transform: translateY(-22px) scale(1.15) rotate(-8deg);
+  }
+  40% {
+    transform: translateY(-10px) scale(1.1) rotate(6deg);
+  }
+  60% {
+    transform: translateY(-18px) scale(1.12) rotate(-4deg);
+  }
+  80% {
+    transform: translateY(-4px) scale(1.05) rotate(2deg);
+  }
+  100% {
+    transform: translateY(0) scale(1) rotate(0);
+  }
+}
+
+/* الجعبوق - cool approval */
+.anim-char-jaabooq-milestone {
+  animation: jaabooq-milestone 0.6s ease-out;
+  transform-origin: bottom center;
+}
+@keyframes jaabooq-milestone {
+  0% {
+    transform: scale(1);
+  }
+  40% {
+    transform: scale(1.08) translateY(-6px);
+  }
+  70% {
+    transform: scale(1.03);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* أبو عداد - proud celebration */
+.anim-char-abu-addad-milestone {
+  animation: abu-addad-milestone 0.7s ease-out;
+  transform-origin: bottom center;
+}
+@keyframes abu-addad-milestone {
+  0% {
+    transform: translateY(0) scale(1) rotate(0);
+  }
+  30% {
+    transform: translateY(-10px) scale(1.08) rotate(-2deg);
+  }
+  55% {
+    transform: translateY(-6px) scale(1.06) rotate(1deg);
+  }
+  100% {
+    transform: translateY(0) scale(1) rotate(0);
+  }
+}
+
+/* المعلم عدّود - proud smile */
+.anim-char-moallem-milestone {
+  animation: moallem-milestone 0.8s ease-in-out;
+  transform-origin: bottom center;
+}
+@keyframes moallem-milestone {
+  0% {
+    transform: translateY(0) scale(1);
+  }
+  40% {
+    transform: translateY(-14px) scale(1.08);
+  }
+  70% {
+    transform: translateY(-6px) scale(1.04);
+  }
+  100% {
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* عدّادجي - turbo celebration */
+.anim-char-addadgy-milestone {
+  animation: addadgy-milestone 0.65s cubic-bezier(0.34, 1.56, 0.64, 1);
+  transform-origin: bottom center;
+}
+@keyframes addadgy-milestone {
+  0% {
+    transform: rotate(0) scale(1);
+  }
+  25% {
+    transform: rotate(-10deg) translateY(-8px) scale(1.1);
+  }
+  50% {
+    transform: rotate(8deg) translateY(-4px) scale(1.08);
+  }
+  75% {
+    transform: rotate(-4deg) scale(1.04);
+  }
+  100% {
+    transform: rotate(0) scale(1);
+  }
+}
+
+/* --- RAPID CLICK REACTIONS --- */
+
+/* الشمقمق - wilder */
+.anim-char-sleepy-rapid {
+  animation: sleepy-rapid 0.28s ease-in-out;
+  transform-origin: bottom center;
+}
+@keyframes sleepy-rapid {
+  0% {
+    transform: translate(0) rotate(0);
+  }
+  50% {
+    transform: translate(-3px, -10px) rotate(-8deg) scale(1.05);
+  }
+  100% {
+    transform: translate(0) rotate(0);
+  }
+}
+
+/* الجعبوق - increasingly concerned shake */
+.anim-char-jaabooq-rapid {
+  animation: jaabooq-rapid 0.32s ease-in-out;
+  transform-origin: bottom center;
+}
+@keyframes jaabooq-rapid {
+  0% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-3px) rotate(-2deg);
+  }
+  75% {
+    transform: translateX(3px) rotate(2deg);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+/* أبو عداد - concerned speed wobble */
+.anim-char-abu-addad-rapid {
+  animation: abu-addad-rapid 0.3s ease-in-out;
+  transform-origin: bottom center;
+}
+@keyframes abu-addad-rapid {
+  0%,
+  100% {
+    transform: rotate(0);
+  }
+  50% {
+    transform: rotate(3deg) translateY(-3px);
+  }
+}
+
+/* المعلم عدّود - patient wobble */
+.anim-char-moallem-rapid {
+  animation: moallem-rapid 0.35s ease-in-out;
+  transform-origin: bottom center;
+}
+@keyframes moallem-rapid {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+/* عدّادجي - TURBO */
+.anim-char-addadgy-rapid {
+  animation: addadgy-rapid 0.22s cubic-bezier(0.34, 1.56, 0.64, 1);
+  transform-origin: bottom center;
+}
+@keyframes addadgy-rapid {
+  0% {
+    transform: rotate(0) scale(1);
+  }
+  50% {
+    transform: rotate(12deg) translateY(-6px) scale(1.08);
+  }
+  100% {
+    transform: rotate(0) scale(1);
+  }
+}
+
+/* --- BORED / LONG INACTIVITY --- */
+
+/* الشمقمق - sleepy slump */
+.anim-char-sleepy-bored {
+  animation: sleepy-bored 10s ease-in-out infinite;
+  transform-origin: bottom center;
+}
+@keyframes sleepy-bored {
+  0%,
+  100% {
+    transform: rotate(5deg) translateY(2px) scale(0.97);
+  }
+  50% {
+    transform: rotate(4deg) translateY(3px) scale(0.96);
+  }
+}
+
+/* الجعبوق - asleep */
+.anim-char-jaabooq-bored {
+  animation: jaabooq-bored 10s ease-in-out infinite;
+  transform-origin: bottom center;
+}
+@keyframes jaabooq-bored {
+  0%,
+  100% {
+    transform: translateY(2px) rotate(3deg) scale(0.97);
+  }
+  50% {
+    transform: translateY(3px) rotate(2.5deg) scale(0.96);
+  }
+}
+
+/* أبو عداد - waiting patiently */
+.anim-char-abu-addad-bored {
+  animation: abu-addad-bored 10s ease-in-out infinite;
+  transform-origin: bottom center;
+}
+@keyframes abu-addad-bored {
+  0%,
+  100% {
+    transform: translateY(1px) rotate(0);
+  }
+  50% {
+    transform: translateY(2px) rotate(0.5deg);
+  }
+}
+
+/* المعلم عدّود - meditating */
+.anim-char-moallem-bored {
+  animation: moallem-bored 10s ease-in-out infinite;
+  transform-origin: bottom center;
+}
+@keyframes moallem-bored {
+  0%,
+  100% {
+    transform: translateY(-2px) scale(0.98);
+  }
+  50% {
+    transform: translateY(-4px) scale(0.99);
+  }
+}
+
+/* عدّادجي - system idle */
+.anim-char-addadgy-bored {
+  animation: addadgy-bored 10s ease-in-out infinite;
+  transform-origin: bottom center;
+}
+@keyframes addadgy-bored {
+  0%,
+  100% {
+    transform: rotate(0) scale(0.97);
+  }
+  50% {
+    transform: rotate(-1deg) scale(0.96);
+  }
+}
+
+/* --- Floating message animations --- */
+@keyframes float-up {
+  0% {
+    opacity: 0;
+    transform: translateY(10px) scale(0.95);
+  }
+  20% {
+    opacity: 1;
+    transform: translateY(-4px) scale(1);
+  }
+  80% {
+    opacity: 1;
+    transform: translateY(-12px) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-20px) scale(0.98);
+  }
+}
+.anim-float-up {
+  animation: float-up 2.2s ease-out forwards;
+}
+
+@keyframes pulse-ring {
+  0% {
+    transform: scale(0.8);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(1.6);
+    opacity: 0;
+  }
+}
+.anim-pulse-ring {
+  animation: pulse-ring 0.8s ease-out;
+}
+
+/* Utility for character wrapper */
+.char-reaction-wrap {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.char-reaction-wrap > svg {
+  display: block;
+}
+
+/* Milestone sparkle effect */
+.milestone-sparkle {
+  position: absolute;
+  inset: -10px;
+  pointer-events: none;
+}
+.milestone-sparkle::before,
+.milestone-sparkle::after {
+  content: "";
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  background: currentColor;
+  clip-path: polygon(
+    50% 0,
+    61% 35%,
+    98% 35%,
+    68% 57%,
+    79% 91%,
+    50% 70%,
+    21% 91%,
+    32% 57%,
+    2% 35%,
+    39% 35%
+  );
+  opacity: 0;
+}
+.milestone-active .milestone-sparkle::before {
+  animation: sparkle-left 0.7s ease-out;
+}
+.milestone-active .milestone-sparkle::after {
+  animation: sparkle-right 0.7s ease-out 0.15s;
+}
+@keyframes sparkle-left {
+  0% {
+    opacity: 0;
+    transform: translate(10%, 30%) scale(0);
+  }
+  50% {
+    opacity: 1;
+    transform: translate(-20%, -10%) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-40%, -40%) scale(0.6);
+  }
+}
+@keyframes sparkle-right {
+  0% {
+    opacity: 0;
+    transform: translate(70%, 40%) scale(0);
+  }
+  50% {
+    opacity: 1;
+    transform: translate(100%, 0%) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(130%, -30%) scale(0.6);
+  }
+}
