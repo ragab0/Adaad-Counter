@@ -225,25 +225,17 @@ export const MASCOTS: Mascot[] = [
   // {
   //   id: "moallem-addood",
   //   name: "المعلم عدّود",
-  //   tagline: "The veteran",
-  //   taglineAr: "من سنين بنعد قبل الإنترنت",
   //   color: "#8b5cf6",
   //   avatar: "moallem-addood",
   //   mood: "The Moallem waves his hand mysteriously. He was counting things before electricity existed.",
-  //   personality:
-  //     "The experienced old-school expert. Behaves like someone who's been counting for 40 years.",
   //   personalityAr: "محترف العد من أيام الحصى على الصخور",
   //   personalityLabel: "المعلم العتيق",
-  //   description:
-  //     "Has 40 years of experience counting. First job: counting palm tree dates manually.",
-  //   descriptionAr: "خبرة 40 سنة في عدّ التمر على الرخام.",
   //   lore: "عنده خبرة 40 سنة في العد.",
   //   power: {
   //     name: "The Veteran",
   //     nameAr: "المحترف",
-  //     description:
-  //       "Calm, confident reactions. Has seen every number in existence.",
   //     descriptionAr: "هدوء وثقة. شاف كل الأرقام اللي موجودة.",
+  //   // description: "خبرة 40 سنة في عدّ التمر على الرخام.",
   //     iconName: "brain",
   //   },
   //   quotes: {

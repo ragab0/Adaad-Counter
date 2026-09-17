@@ -58,7 +58,7 @@ export function CounterModal({ open, onClose, editing = null }: Props) {
   return (
     <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
       <div
-        className="absolute inset-0 bg-slate-900/40 backdrop-blur-sm"
+        className="absolute inset-0 dark:bg-slate-900/40 backdrop-blur-sm"
         onClick={onClose}
       />
       <div className="animate-scale-in relative w-full max-w-md rounded-2xl bg-white shadow-2xl dark:bg-slate-800">
