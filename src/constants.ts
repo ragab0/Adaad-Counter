@@ -111,6 +111,42 @@ export const MASCOTS: Mascot[] = [
     },
     milestones: MILESTONES,
   },
+  {
+    id: "mamdouh",
+    name: "المعلم عدّود",
+    color: "#f97316",
+    avatar: "mamdouh",
+    mood: "معلم شيت العد, مفيش رقم بيعدي من غير ما يوزنه ...",
+    personalityAr: "معلم قديم في شغل العد. خبرته بالكيلو مش بالسنين",
+    personalityLabel: "عداد أوزان",
+    lore: "عنده خبرة 40 كيلو في العد.",
+    power: {
+      name: "Heavy Duty",
+      nameAr: "عداد أوزان",
+      descriptionAr:
+        "مش محتاج يعد... بيبص للرقم وبيقولك وزنه على طول، زي ما يكون شايله على كتافه.",
+      iconName: "weight",
+    },
+    quotes: {
+      increase: "تقّل يا معلم",
+      decrease: "ناقص كيلو من الرقم يا سيدي، حد سرق منه؟",
+      reset: "بلاش زن، رجعناه للصفر زي ما طلع من المصنع",
+      milestone: "ده رقم يستاهل قعدة كنافة على حسابي 🥸",
+      rapid: "يا سلام عليك جري جري كده هتخس يا ابني",
+      bored: "لسه الرقم ما تِقِلش؟",
+      interaction: "هات الرقم على الميزان يا ابني",
+    },
+    animations: {
+      idle: "anim-char-mamdouh-idle",
+      increase: "anim-char-mamdouh-increase",
+      decrease: "anim-char-mamdouh-decrease",
+      reset: "anim-char-mamdouh-reset",
+      milestone: "anim-char-mamdouh-milestone",
+      rapid: "anim-char-mamdouh-rapid",
+      bored: "anim-char-mamdouh-bored",
+    },
+    milestones: MILESTONES,
+  },
   // {
   //   id: "sleepy",
   //   name: "الشمقمق",
@@ -352,7 +388,6 @@ export const DEFAULT_SETTINGS: AppSettings = {
   selectedMascot: "manager",
   globalIncrement: 1,
   globalDecrement: 1,
-  floatingMode: false,
   theme: "dark",
 };
 

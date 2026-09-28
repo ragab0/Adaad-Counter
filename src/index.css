@@ -10,16 +10,16 @@ body,
 
 body {
   margin: 0;
-  background: #f8f9fa;
-  color: #1a1d21;
+  background: #f4f4f5;
+  color: #1c1917;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
-  transition: background-color 0.2s ease, color 0.2s ease;
+  transition: background-color 0.25s ease, color 0.25s ease;
 }
 
 .dark body {
-  background: #424250;
-  color: #e5e7eb;
+  background: #13141b;
+  color: #e4e6ef;
 }
 
 .tabular-nums {
@@ -158,17 +158,17 @@ body {
   background: transparent;
 }
 ::-webkit-scrollbar-thumb {
-  background: #d1d5db;
+  background: #d6d1c7;
   border-radius: 4px;
 }
 .dark ::-webkit-scrollbar-thumb {
-  background: #4b5563;
+  background: #3a3d4d;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #9ca3af;
+  background: #bdb6a9;
 }
 .dark ::-webkit-scrollbar-thumb:hover {
-  background: #6b7280;
+  background: #4a4e60;
 }
 
 .dragging-active * {
@@ -201,7 +201,7 @@ body {
   animation: sleepy-bounce 1.8s ease-in-out infinite;
 }
 
-@keyframes jaabooq-cool {
+@keyframes manager-cool {
   0%,
   100% {
     transform: translateY(0) rotate(0deg);
@@ -219,8 +219,8 @@ body {
     transform: translateX(-3px) rotate(1deg);
   }
 }
-.animate-mood-jaabooq {
-  animation: jaabooq-cool 3s ease-in-out infinite;
+.animate-mood-manager {
+  animation: manager-cool 3s ease-in-out infinite;
 }
 
 @keyframes abu-addad-nod {
@@ -335,11 +335,11 @@ body {
 }
 
 /* الجعبوق - looking around idle */
-.anim-char-jaabooq-idle {
-  animation: jaabooq-idle 3.5s ease-in-out infinite;
+.anim-char-manager-idle {
+  animation: manager-idle 3.5s ease-in-out infinite;
   transform-origin: bottom center;
 }
-@keyframes jaabooq-idle {
+@keyframes manager-idle {
   0%,
   100% {
     transform: translateX(0) rotate(0);
@@ -409,6 +409,11 @@ body {
   }
 }
 
+.anim-char-mamdouh-idle {
+  animation: addadgy-idle 1.4s ease-in-out infinite;
+  transform-origin: bottom center;
+}
+
 /* --- INCREASE REACTIONS (short, purposeful) --- */
 
 /* الشمقمق - excited jump */
@@ -432,11 +437,11 @@ body {
 }
 
 /* الجعبوق - approving nod */
-.anim-char-jaabooq-increase {
-  animation: jaabooq-increase 0.4s ease-out;
+.anim-char-manager-increase {
+  animation: manager-increase 0.4s ease-out;
   transform-origin: bottom center;
 }
-@keyframes jaabooq-increase {
+@keyframes manager-increase {
   0% {
     transform: rotate(0) translateY(0);
   }
@@ -505,6 +510,11 @@ body {
   }
 }
 
+.anim-char-mamdouh-increase {
+  animation: addadgy-increase 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+  transform-origin: bottom center;
+}
+
 /* --- DECREASE REACTIONS --- */
 
 /* الشمقمق - confused */
@@ -531,11 +541,11 @@ body {
 }
 
 /* الجعبوق - suspicious lean */
-.anim-char-jaabooq-decrease {
-  animation: jaabooq-decrease 0.5s ease-out;
+.anim-char-manager-decrease {
+  animation: manager-decrease 0.5s ease-out;
   transform-origin: bottom center;
 }
-@keyframes jaabooq-decrease {
+@keyframes manager-decrease {
   0% {
     transform: translateX(0) rotate(0);
   }
@@ -607,6 +617,11 @@ body {
   }
 }
 
+.anim-char-mamdouh-decrease {
+  animation: addadgy-decrease 0.4s ease-out;
+  transform-origin: bottom center;
+}
+
 /* --- RESET REACTIONS (dramatic) --- */
 
 /* الشمقمق - dramatic shock */
@@ -633,11 +648,11 @@ body {
 }
 
 /* الجعبوق - dramatic WHAT */
-.anim-char-jaabooq-reset {
-  animation: jaabooq-reset 0.7s ease-in-out;
+.anim-char-manager-reset {
+  animation: manager-reset 0.7s ease-in-out;
   transform-origin: bottom center;
 }
-@keyframes jaabooq-reset {
+@keyframes manager-reset {
   0% {
     transform: translateY(0) rotate(0) scale(1);
   }
@@ -718,6 +733,11 @@ body {
   }
 }
 
+.anim-char-mamdouh-reset {
+  animation: addadgy-reset 0.7s ease-in-out;
+  transform-origin: bottom center;
+}
+
 /* --- MILESTONE REACTIONS (celebration) --- */
 
 /* الشمقمق - wild celebration */
@@ -747,11 +767,11 @@ body {
 }
 
 /* الجعبوق - cool approval */
-.anim-char-jaabooq-milestone {
-  animation: jaabooq-milestone 0.6s ease-out;
+.anim-char-manager-milestone {
+  animation: manager-milestone 0.6s ease-out;
   transform-origin: bottom center;
 }
-@keyframes jaabooq-milestone {
+@keyframes manager-milestone {
   0% {
     transform: scale(1);
   }
@@ -829,6 +849,11 @@ body {
   }
 }
 
+.anim-char-mamdouh-milestone {
+  animation: addadgy-milestone 0.65s cubic-bezier(0.34, 1.56, 0.64, 1);
+  transform-origin: bottom center;
+}
+
 /* --- RAPID CLICK REACTIONS --- */
 
 /* الشمقمق - wilder */
@@ -849,11 +874,11 @@ body {
 }
 
 /* الجعبوق - increasingly concerned shake */
-.anim-char-jaabooq-rapid {
-  animation: jaabooq-rapid 0.32s ease-in-out;
+.anim-char-manager-rapid {
+  animation: manager-rapid 0.32s ease-in-out;
   transform-origin: bottom center;
 }
-@keyframes jaabooq-rapid {
+@keyframes manager-rapid {
   0% {
     transform: translateX(0);
   }
@@ -915,6 +940,11 @@ body {
   }
 }
 
+.anim-char-mamdouh-rapid {
+  animation: addadgy-rapid 0.22s cubic-bezier(0.34, 1.56, 0.64, 1);
+  transform-origin: bottom center;
+}
+
 /* --- BORED / LONG INACTIVITY --- */
 
 /* الشمقمق - sleepy slump */
@@ -933,11 +963,11 @@ body {
 }
 
 /* الجعبوق - asleep */
-.anim-char-jaabooq-bored {
-  animation: jaabooq-bored 10s ease-in-out infinite;
+.anim-char-manager-bored {
+  animation: manager-bored 10s ease-in-out infinite;
   transform-origin: bottom center;
 }
-@keyframes jaabooq-bored {
+@keyframes manager-bored {
   0%,
   100% {
     transform: translateY(2px) rotate(3deg) scale(0.97);
@@ -990,6 +1020,11 @@ body {
   50% {
     transform: rotate(-1deg) scale(0.96);
   }
+}
+
+.anim-char-mamdouh-bored {
+  animation: addadgy-bored 10s ease-in-out infinite;
+  transform-origin: bottom center;
 }
 
 /* --- Floating message animations --- */
@@ -1100,4 +1135,27 @@ body {
     opacity: 0;
     transform: translate(130%, -30%) scale(0.6);
   }
+}
+
+/* === Calm Floating Dots Background === */
+.animated-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.animated-bg-canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+#root {
+  position: relative;
+  z-index: 1;
 }

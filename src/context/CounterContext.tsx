@@ -6,10 +6,15 @@ import {
   useMemo,
   useState,
   type ReactNode,
-} from 'react';
-import type { AppSettings, Counter, LayoutType, ThemeMode } from '@/types/counter';
-import { DEFAULT_COUNTERS, DEFAULT_SETTINGS, STORAGE_KEY } from '@/constants';
-import { useLocalStorage } from '@/hooks/useLocalStorage';
+} from "react";
+import type {
+  AppSettings,
+  Counter,
+  LayoutType,
+  ThemeMode,
+} from "@/types/counter";
+import { DEFAULT_COUNTERS, DEFAULT_SETTINGS, STORAGE_KEY } from "@/constants";
+import { useLocalStorage } from "@/hooks/useLocalStorage";
 
 interface PersistShape {
   counters: Counter[];
@@ -33,7 +38,6 @@ interface CounterContextValue {
   updateSettings: (patch: Partial<AppSettings>) => void;
   setLayout: (layout: LayoutType) => void;
   setMascot: (id: string) => void;
-  toggleFloatingMode: () => void;
   setTheme: (theme: ThemeMode) => void;
   toggleTheme: () => void;
   applyGlobalIncrement: () => void;
@@ -43,7 +47,7 @@ interface CounterContextValue {
 
 const CounterContext = createContext<CounterContextValue | null>(null);
 
-function uid(prefix = 'c'): string {
+function uid(prefix = "c"): string {
   return `${prefix}-${Date.now()}-${Math.random().toString(36).slice(2, 8)}`;
 }
 
@@ -54,11 +58,16 @@ export function CounterProvider({ children }: { children: ReactNode }) {
   });
 
   const { counters, settings } = persist;
-  const [selectedCounterId, setSelectedCounterId] = useState<string | null>(null);
+  const [selectedCounterId, setSelectedCounterId] = useState<string | null>(
+    null
+  );
 
   // keep selection valid
   useEffect(() => {
-    if (selectedCounterId && !counters.some((c) => c.id === selectedCounterId)) {
+    if (
+      selectedCounterId &&
+      !counters.some((c) => c.id === selectedCounterId)
+    ) {
       setSelectedCounterId(null);
     }
   }, [counters, selectedCounterId]);
@@ -66,13 +75,14 @@ export function CounterProvider({ children }: { children: ReactNode }) {
   // apply theme to <html>
   useEffect(() => {
     const root = document.documentElement;
-    if (settings.theme === 'dark') root.classList.add('dark');
-    else root.classList.remove('dark');
+    if (settings.theme === "dark") root.classList.add("dark");
+    else root.classList.remove("dark");
   }, [settings.theme]);
 
   const patchPersist = useCallback(
-    (fn: (prev: PersistShape) => PersistShape) => setPersist((prev) => fn(prev)),
-    [setPersist],
+    (fn: (prev: PersistShape) => PersistShape) =>
+      setPersist((prev) => fn(prev)),
+    [setPersist]
   );
 
   const addCounter = useCallback(
@@ -93,17 +103,19 @@ export function CounterProvider({ children }: { children: ReactNode }) {
       });
       return id;
     },
-    [patchPersist],
+    [patchPersist]
   );
 
   const updateCounter = useCallback(
     (id: string, patch: Partial<Counter>) => {
       patchPersist((prev) => ({
         ...prev,
-        counters: prev.counters.map((c) => (c.id === id ? { ...c, ...patch } : c)),
+        counters: prev.counters.map((c) =>
+          c.id === id ? { ...c, ...patch } : c
+        ),
       }));
     },
-    [patchPersist],
+    [patchPersist]
   );
 
   const deleteCounter = useCallback(
@@ -113,7 +125,7 @@ export function CounterProvider({ children }: { children: ReactNode }) {
         counters: prev.counters.filter((c) => c.id !== id),
       }));
     },
-    [patchPersist],
+    [patchPersist]
   );
 
   const incrementCounter = useCallback(
@@ -121,11 +133,11 @@ export function CounterProvider({ children }: { children: ReactNode }) {
       patchPersist((prev) => ({
         ...prev,
         counters: prev.counters.map((c) =>
-          c.id === id ? { ...c, value: c.value + c.increment } : c,
+          c.id === id ? { ...c, value: c.value + c.increment } : c
         ),
       }));
     },
-    [patchPersist],
+    [patchPersist]
   );
 
   const decrementCounter = useCallback(
@@ -133,21 +145,23 @@ export function CounterProvider({ children }: { children: ReactNode }) {
       patchPersist((prev) => ({
         ...prev,
         counters: prev.counters.map((c) =>
-          c.id === id ? { ...c, value: c.value - c.decrement } : c,
+          c.id === id ? { ...c, value: c.value - c.decrement } : c
         ),
       }));
     },
-    [patchPersist],
+    [patchPersist]
   );
 
   const resetCounter = useCallback(
     (id: string) => {
       patchPersist((prev) => ({
         ...prev,
-        counters: prev.counters.map((c) => (c.id === id ? { ...c, value: 0 } : c)),
+        counters: prev.counters.map((c) =>
+          c.id === id ? { ...c, value: 0 } : c
+        ),
       }));
     },
-    [patchPersist],
+    [patchPersist]
   );
 
   const setCounterValue = useCallback(
@@ -157,7 +171,7 @@ export function CounterProvider({ children }: { children: ReactNode }) {
         counters: prev.counters.map((c) => (c.id === id ? { ...c, value } : c)),
       }));
     },
-    [patchPersist],
+    [patchPersist]
   );
 
   const reorderCounters = useCallback(
@@ -174,7 +188,7 @@ export function CounterProvider({ children }: { children: ReactNode }) {
         return { ...prev, counters: reordered };
       });
     },
-    [patchPersist],
+    [patchPersist]
   );
 
   const updateSettings = useCallback(
@@ -184,29 +198,28 @@ export function CounterProvider({ children }: { children: ReactNode }) {
         settings: { ...prev.settings, ...patch },
       }));
     },
-    [patchPersist],
+    [patchPersist]
   );
 
   const setLayout = useCallback(
     (layout: LayoutType) => updateSettings({ layout }),
-    [updateSettings],
+    [updateSettings]
   );
   const setMascot = useCallback(
     (id: string) => updateSettings({ selectedMascot: id }),
-    [updateSettings],
-  );
-  const toggleFloatingMode = useCallback(
-    () => updateSettings({ floatingMode: !persist.settings.floatingMode }),
-    [updateSettings, persist.settings.floatingMode],
+    [updateSettings]
   );
   const setTheme = useCallback(
     (theme: ThemeMode) => updateSettings({ theme }),
-    [updateSettings],
+    [updateSettings]
   );
   const toggleTheme = useCallback(() => {
     patchPersist((prev) => ({
       ...prev,
-      settings: { ...prev.settings, theme: prev.settings.theme === 'dark' ? 'light' : 'dark' },
+      settings: {
+        ...prev.settings,
+        theme: prev.settings.theme === "dark" ? "light" : "dark",
+      },
     }));
   }, [patchPersist]);
 
@@ -221,7 +234,10 @@ export function CounterProvider({ children }: { children: ReactNode }) {
     }));
   }, [patchPersist]);
 
-  const selectCounter = useCallback((id: string | null) => setSelectedCounterId(id), []);
+  const selectCounter = useCallback(
+    (id: string | null) => setSelectedCounterId(id),
+    []
+  );
 
   const value = useMemo<CounterContextValue>(
     () => ({
@@ -239,7 +255,6 @@ export function CounterProvider({ children }: { children: ReactNode }) {
       updateSettings,
       setLayout,
       setMascot,
-      toggleFloatingMode,
       setTheme,
       toggleTheme,
       applyGlobalIncrement,
@@ -260,19 +275,21 @@ export function CounterProvider({ children }: { children: ReactNode }) {
       updateSettings,
       setLayout,
       setMascot,
-      toggleFloatingMode,
       setTheme,
       toggleTheme,
       applyGlobalIncrement,
       selectCounter,
-    ],
+    ]
   );
 
-  return <CounterContext.Provider value={value}>{children}</CounterContext.Provider>;
+  return (
+    <CounterContext.Provider value={value}>{children}</CounterContext.Provider>
+  );
 }
 
 export function useCounterContext(): CounterContextValue {
   const ctx = useContext(CounterContext);
-  if (!ctx) throw new Error('useCounterContext must be used within CounterProvider');
+  if (!ctx)
+    throw new Error("useCounterContext must be used within CounterProvider");
   return ctx;
 }

@@ -58,17 +58,17 @@ export function CounterModal({ open, onClose, editing = null }: Props) {
   return (
     <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
       <div
-        className="absolute inset-0 dark:bg-slate-900/40 backdrop-blur-sm"
+        className="absolute inset-0 bg-slate-900/40 backdrop-blur-sm"
         onClick={onClose}
       />
-      <div className="animate-scale-in relative w-full max-w-md rounded-2xl bg-white shadow-2xl dark:bg-slate-800">
-        <div className="flex items-center justify-between border-b border-slate-100 px-5 py-4 dark:border-slate-700">
+      <div className="animate-scale-in relative w-full max-w-md rounded-2xl border border-border-light bg-surface-light shadow-2xl dark:border-border-dark dark:bg-surface-dark">
+        <div className="flex items-center justify-between border-b border-border-light px-5 py-4 dark:border-border-dark">
           <h2 className="text-lg font-bold text-slate-800 dark:text-slate-100">
             {editing ? "Edit counter" : "New counter"}
           </h2>
           <button
             onClick={onClose}
-            className="rounded-lg p-1.5 text-slate-400 transition hover:bg-slate-100 dark:hover:bg-slate-700"
+            className="rounded-lg p-1.5 text-text-muted-light transition hover:bg-surface-hover-light dark:text-text-muted-dark dark:hover:bg-surface-hover-dark"
             aria-label="Close"
           >
             <X className="h-5 w-5" />
@@ -82,7 +82,7 @@ export function CounterModal({ open, onClose, editing = null }: Props) {
               value={name}
               onChange={(e) => setName(e.target.value)}
               placeholder="e.g. Risks"
-              className="w-full rounded-xl border border-slate-200 bg-white px-3 py-2.5 text-sm text-slate-800 outline-none transition focus:border-brand-400 focus:ring-2 focus:ring-brand-100 dark:border-slate-600 dark:bg-slate-700 dark:text-slate-100 dark:focus:border-brand-500 dark:focus:ring-brand-900/40"
+              className="w-full rounded-xl border border-border-light bg-surface-light px-3 py-2.5 text-sm text-slate-800 outline-none transition focus:border-brand-400 focus:ring-2 focus:ring-brand-100 dark:border-border-dark dark:bg-surface-hover-dark dark:text-slate-100 dark:focus:border-brand-500 dark:focus:ring-brand-900/40"
               autoFocus
             />
             {error && (
@@ -95,7 +95,7 @@ export function CounterModal({ open, onClose, editing = null }: Props) {
               type="number"
               value={value}
               onChange={(e) => setValue(Number(e.target.value) || 0)}
-              className="w-full rounded-xl border border-slate-200 bg-white px-3 py-2.5 text-sm text-slate-800 outline-none transition focus:border-brand-400 focus:ring-2 focus:ring-brand-100 dark:border-slate-600 dark:bg-slate-700 dark:text-slate-100 dark:focus:border-brand-500 dark:focus:ring-brand-900/40"
+              className="w-full rounded-xl border border-border-light bg-surface-light px-3 py-2.5 text-sm text-slate-800 outline-none transition focus:border-brand-400 focus:ring-2 focus:ring-brand-100 dark:border-border-dark dark:bg-surface-hover-dark dark:text-slate-100 dark:focus:border-brand-500 dark:focus:ring-brand-900/40"
             />
           </Field>
 
@@ -105,7 +105,7 @@ export function CounterModal({ open, onClose, editing = null }: Props) {
                 type="number"
                 value={increment}
                 onChange={(e) => setIncrement(Number(e.target.value) || 1)}
-                className="w-full rounded-xl border border-slate-200 bg-white px-3 py-2.5 text-sm text-slate-800 outline-none transition focus:border-brand-400 focus:ring-2 focus:ring-brand-100 dark:border-slate-600 dark:bg-slate-700 dark:text-slate-100 dark:focus:border-brand-500 dark:focus:ring-brand-900/40"
+                className="w-full rounded-xl border border-border-light bg-surface-light px-3 py-2.5 text-sm text-slate-800 outline-none transition focus:border-brand-400 focus:ring-2 focus:ring-brand-100 dark:border-border-dark dark:bg-surface-hover-dark dark:text-slate-100 dark:focus:border-brand-500 dark:focus:ring-brand-900/40"
               />
             </Field>
             <Field label="Decrement by">
@@ -113,16 +113,16 @@ export function CounterModal({ open, onClose, editing = null }: Props) {
                 type="number"
                 value={decrement}
                 onChange={(e) => setDecrement(Number(e.target.value) || 1)}
-                className="w-full rounded-xl border border-slate-200 bg-white px-3 py-2.5 text-sm text-slate-800 outline-none transition focus:border-brand-400 focus:ring-2 focus:ring-brand-100 dark:border-slate-600 dark:bg-slate-700 dark:text-slate-100 dark:focus:border-brand-500 dark:focus:ring-brand-900/40"
+                className="w-full rounded-xl border border-border-light bg-surface-light px-3 py-2.5 text-sm text-slate-800 outline-none transition focus:border-brand-400 focus:ring-2 focus:ring-brand-100 dark:border-border-dark dark:bg-surface-hover-dark dark:text-slate-100 dark:focus:border-brand-500 dark:focus:ring-brand-900/40"
               />
             </Field>
           </div>
         </div>
 
-        <div className="flex gap-2 border-t border-slate-100 px-5 py-4 dark:border-slate-700">
+        <div className="flex gap-2 border-t border-border-light px-5 py-4 dark:border-border-dark">
           <button
             onClick={onClose}
-            className="flex-1 rounded-xl border border-slate-200 bg-white px-4 py-2.5 text-sm font-bold text-slate-600 transition hover:bg-slate-50 dark:border-slate-600 dark:bg-slate-700 dark:text-slate-300 dark:hover:bg-slate-600"
+            className="flex-1 rounded-xl border border-border-light bg-surface-light px-4 py-2.5 text-sm font-bold text-stone-700 transition hover:bg-surface-hover-light dark:border-border-dark dark:bg-btn-secondary-dark dark:text-slate-300 dark:hover:bg-btn-secondary-hover-dark"
           >
             Cancel
           </button>
@@ -147,7 +147,7 @@ function Field({
 }) {
   return (
     <label className="block">
-      <span className="mb-1.5 block text-xs font-bold text-slate-500 dark:text-slate-400">
+      <span className="mb-1.5 block text-xs font-bold text-text-muted-light dark:text-text-muted-dark">
         {label}
       </span>
       {children}

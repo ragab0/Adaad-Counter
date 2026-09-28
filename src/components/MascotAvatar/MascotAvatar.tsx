@@ -75,6 +75,8 @@ function renderAvatar(avatar: AvatarType, color: string, mood: CharacterMood) {
       return <MoallemAddood color={color} mood={mood} />;
     case "addadgy":
       return <Addadgy color={color} mood={mood} />;
+    case "mamdouh":
+      return <Mamdouh color={color} mood={mood} />;
   }
 }
 
@@ -1227,6 +1229,224 @@ function Addadgy({ color, mood }: { color: string; mood: CharacterMood }) {
             ⚡
           </text>
         </>
+      )}
+    </>
+  );
+}
+
+function Mamdouh({ color, mood }: { color: string; mood: CharacterMood }) {
+  const getEyes = () => {
+    switch (mood) {
+      case "increase":
+      case "milestone":
+        return (
+          <>
+            <path
+              d="M30 49 Q38 43 46 49"
+              fill="none"
+              stroke="#1a1d21"
+              strokeWidth="2.5"
+              strokeLinecap="round"
+            />
+            <path
+              d="M56 49 Q64 43 72 49"
+              fill="none"
+              stroke="#1a1d21"
+              strokeWidth="2.5"
+              strokeLinecap="round"
+            />
+          </>
+        );
+      case "decrease":
+        return (
+          <>
+            <circle cx="38" cy="50" r="5.5" fill="white" />
+            <circle cx="64" cy="48" r="5.5" fill="white" />
+            <circle cx="38" cy="51" r="3" fill="#1a1d21" />
+            <circle cx="64" cy="49" r="3" fill="#1a1d21" />
+            <path
+              d="M31 41 L43 39"
+              fill="none"
+              stroke="#1a1d21"
+              strokeWidth="2"
+              strokeLinecap="round"
+            />
+          </>
+        );
+      case "reset":
+        return (
+          <>
+            <circle cx="38" cy="49" r="6.5" fill="white" />
+            <circle cx="64" cy="49" r="6.5" fill="white" />
+            <circle cx="38" cy="49" r="3.5" fill="#1a1d21" />
+            <circle cx="64" cy="49" r="3.5" fill="#1a1d21" />
+          </>
+        );
+      case "rapid":
+        return (
+          <>
+            <circle cx="38" cy="48" r="6" fill="white" />
+            <circle cx="64" cy="48" r="6" fill="white" />
+            <circle cx="40" cy="48" r="3.2" fill="#1a1d21" />
+            <circle cx="66" cy="48" r="3.2" fill="#1a1d21" />
+          </>
+        );
+      case "bored":
+        return (
+          <>
+            <path
+              d="M30 49 Q38 52 46 49 L46 51 Q38 53 30 51 Z"
+              fill="#1a1d21"
+            />
+            <path
+              d="M56 49 Q64 52 72 49 L72 51 Q64 53 56 51 Z"
+              fill="#1a1d21"
+            />
+          </>
+        );
+      default:
+        return (
+          <>
+            <circle cx="38" cy="49" r="5.5" fill="white" />
+            <circle cx="64" cy="49" r="5.5" fill="white" />
+            <circle cx="38" cy="49" r="3" fill="#1a1d21" />
+            <circle cx="64" cy="49" r="3" fill="#1a1d21" />
+          </>
+        );
+    }
+  };
+
+  const getMouth = () => {
+    switch (mood) {
+      case "increase":
+      case "milestone":
+        return (
+          <>
+            <path
+              d="M33 68 Q51 86 69 68 Q61 75 51 75 Q41 75 33 68 Z"
+              fill="#1a1d21"
+            />
+            <path d="M38 70 Q51 80 64 70" fill="white" />
+            <ellipse cx="51" cy="77" rx="5" ry="3" fill="#f87171" />
+          </>
+        );
+      case "decrease":
+        return (
+          <path
+            d="M40 70 Q51 66 62 70"
+            fill="none"
+            stroke="#1a1d21"
+            strokeWidth="2.5"
+            strokeLinecap="round"
+          />
+        );
+      case "reset":
+        return (
+          <>
+            <ellipse cx="51" cy="72" rx="7" ry="5" fill="#1a1d21" />
+            <ellipse cx="51" cy="73" rx="4" ry="2.5" fill="#f87171" />
+          </>
+        );
+      case "rapid":
+        return (
+          <>
+            <ellipse cx="51" cy="70" rx="9" ry="7" fill="#1a1d21" />
+            <ellipse cx="51" cy="72" rx="5" ry="3.5" fill="#f87171" />
+          </>
+        );
+      case "bored":
+        return (
+          <path
+            d="M42 71 Q51 69 60 71"
+            fill="none"
+            stroke="#1a1d21"
+            strokeWidth="2"
+            strokeLinecap="round"
+          />
+        );
+      default:
+        return (
+          <path
+            d="M38 67 Q51 74 64 67"
+            fill="none"
+            stroke="#1a1d21"
+            strokeWidth="2.5"
+            strokeLinecap="round"
+          />
+        );
+    }
+  };
+
+  return (
+    <>
+      {/* curly black hair - round tight curls across the top */}
+      <g>
+        <circle cx="24" cy="34" r="7.5" fill="#1a1d21" />
+        <circle cx="32" cy="23" r="8.5" fill="#1a1d21" />
+        <circle cx="43" cy="16" r="9" fill="#1a1d21" />
+        <circle cx="59" cy="16" r="9" fill="#1a1d21" />
+        <circle cx="70" cy="23" r="8.5" fill="#1a1d21" />
+        <circle cx="78" cy="34" r="7.5" fill="#1a1d21" />
+        <circle cx="51" cy="22" r="9.5" fill="#1a1d21" />
+      </g>
+
+      {/* big round fat face with double chin */}
+      <ellipse cx="51" cy="60" rx="29" ry="27" fill="#b97a4e" />
+      <ellipse cx="51" cy="83" rx="18" ry="8" fill="#b97a4e" />
+      <path
+        d="M35 78 Q51 86 67 78"
+        fill="none"
+        stroke="#a06a42"
+        strokeWidth="1.5"
+        strokeOpacity="0.5"
+        strokeLinecap="round"
+      />
+
+      {/* puffy chubby cheeks */}
+      <circle cx="26" cy="62" r="9" fill="#b97a4e" />
+      <circle cx="76" cy="62" r="9" fill="#b97a4e" />
+      <circle cx="27" cy="62" r="5" fill="#f87171" fillOpacity="0.3" />
+      <circle cx="75" cy="62" r="5" fill="#f87171" fillOpacity="0.3" />
+
+      {/* short curly stubble */}
+      <path
+        d="M28 66 Q31 80 51 82 Q71 80 74 66 Q67 76 51 76 Q35 76 28 66 Z"
+        fill="#1a1d21"
+        fillOpacity="0.8"
+      />
+
+      {getEyes()}
+      {getMouth()}
+
+      {/* zzz for bored */}
+      {mood === "bored" && (
+        <text
+          x="70"
+          y="30"
+          fontSize="9"
+          fill={color}
+          fillOpacity="0.6"
+          fontFamily="sans-serif"
+          fontWeight="bold"
+        >
+          z z Z
+        </text>
+      )}
+
+      {/* sparkle for milestone */}
+      {mood === "milestone" && (
+        <text x="16" y="42" fontSize="8" fill="#fbbf24">
+          ✨
+        </text>
+      )}
+
+      {/* sweat drop for rapid — talking too fast */}
+      {mood === "rapid" && (
+        <path
+          d="M76 52 Q79 57 77 61 Q74 58 75 54 Z"
+          fill="#60a5fa"
+          fillOpacity="0.8"
+        />
       )}
     </>
   );

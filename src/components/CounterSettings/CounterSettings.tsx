@@ -38,7 +38,7 @@ export function CounterSettings({
   return (
     <div
       ref={ref}
-      className={`animate-slide-down absolute left-0 top-12 z-50 w-52 rounded-xl border border-slate-700 bg-background p-1.5 shadow-xl ${clsName}`}
+      className={`animate-slide-down absolute left-0 top-12 z-50 w-52 rounded-xl border border-border-light bg-surface-light p-1.5 shadow-xl dark:border-border-dark dark:bg-surface-dark ${clsName}`}
     >
       <MenuItem
         icon={Pencil}
@@ -74,7 +74,7 @@ export function CounterSettings({
           onClose();
         }}
       />
-      <div className="my-1 h-px bg-slate-700" />
+      <div className="my-1 h-px bg-border-light dark:bg-border-dark" />
       <MenuItem
         icon={Trash2}
         label="Delete"
@@ -102,8 +102,10 @@ function MenuItem({
   return (
     <button
       onClick={onClick}
-      className={`flex w-full items-center gap-3 rounded-lg px-3 py-2.5 text-left text-sm transition hover:bg-slate-700/50 ${
-        danger ? "text-red-400 hover:bg-red-900/30" : "text-slate-200"
+      className={`flex w-full items-center gap-3 rounded-lg px-3 py-2.5 text-left text-sm transition ${
+        danger
+          ? "text-red-600 hover:bg-red-50 dark:text-red-400 dark:hover:bg-red-900/30"
+          : "text-slate-700 hover:bg-surface-hover-light dark:text-slate-200 dark:hover:bg-surface-hover-dark"
       }`}
     >
       <Icon className="h-5 w-5" />

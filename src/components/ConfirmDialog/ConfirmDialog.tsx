@@ -28,7 +28,7 @@ export function ConfirmDialog({
         className="absolute inset-0 bg-slate-900/50 backdrop-blur-sm"
         onClick={onCancel}
       />
-      <div className="animate-scale-in relative w-full max-w-sm rounded-2xl bg-white p-6 shadow-2xl dark:bg-background">
+      <div className="animate-scale-in relative w-full max-w-sm rounded-2xl border border-border-light bg-surface-light p-6 shadow-2xl dark:border-border-dark dark:bg-surface-dark">
         <div className="mb-4 flex items-center gap-3">
           <span className="flex h-11 w-11 items-center justify-center rounded-full bg-red-100 dark:bg-red-900/30">
             <AlertTriangle className="h-5 w-5 text-red-600 dark:text-red-400" />
@@ -37,13 +37,13 @@ export function ConfirmDialog({
             {title}
           </h2>
         </div>
-        <p className="mb-6 text-sm leading-relaxed text-slate-500 dark:text-slate-400">
+        <p className="mb-6 text-sm leading-relaxed text-text-muted-light dark:text-text-muted-dark">
           {message}
         </p>
         <div className="flex gap-2">
           <button
             onClick={onCancel}
-            className="flex-1 rounded-xl border border-slate-200 bg-white px-4 py-2.5 text-sm font-bold text-slate-600 transition hover:bg-slate-50 dark:border-slate-600 dark:bg-slate-700/50 dark:text-slate-300 dark:hover:bg-slate-700"
+            className="flex-1 rounded-xl border border-border-light bg-surface-light px-4 py-2.5 text-sm font-bold text-stone-700 transition hover:bg-surface-hover-light dark:border-border-dark dark:bg-btn-secondary-dark dark:text-slate-300 dark:hover:bg-btn-secondary-hover-dark"
           >
             {cancelLabel}
           </button>

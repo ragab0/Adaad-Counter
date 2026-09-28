@@ -3,10 +3,11 @@ export type ThemeMode = "dark" | "light";
 
 export type AvatarType =
   | "sleepy"
-  | "jaabooq"
+  | "manager"
   | "abu-addad"
   | "moallem-addood"
-  | "addadgy";
+  | "addadgy"
+  | "mamdouh";
 export type CharacterMood =
   | "idle"
   | "increase"
@@ -31,7 +32,6 @@ export interface AppSettings {
   selectedMascot: string;
   globalIncrement: number;
   globalDecrement: number;
-  floatingMode: boolean;
   theme: ThemeMode;
 }
 
@@ -39,7 +39,7 @@ export interface CharacterPower {
   name: string;
   nameAr: string;
   descriptionAr: string;
-  iconName: "zap" | "eye" | "bar-chart" | "brain" | "rocket";
+  iconName: "zap" | "eye" | "bar-chart" | "brain" | "rocket" | "weight";
 }
 
 export interface CharacterAnimations {

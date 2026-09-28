@@ -38,6 +38,23 @@ export function Dashboard() {
     if (singleIndex >= sorted.length) setSingleIndex(0);
   }, [sorted.length, singleIndex]);
 
+  useEffect(() => {
+    if (settings.layout !== "single") return;
+    if (sorted.length === 0) return;
+
+    const selectedIdx = selectedCounterId
+      ? sorted.findIndex((c) => c.id === selectedCounterId)
+      : -1;
+
+    const targetIdx =
+      selectedIdx >= 0 ? selectedIdx : Math.min(singleIndex, sorted.length - 1);
+
+    if (targetIdx !== singleIndex) setSingleIndex(targetIdx);
+
+    const targetId = sorted[targetIdx]?.id ?? null;
+    if (targetId && selectedCounterId !== targetId) selectCounter(targetId);
+  }, [settings.layout, sorted, selectedCounterId, singleIndex, selectCounter]);
+
   const openEdit = (c: Counter) => {
     setEditing(c);
     setModalOpen(true);
@@ -128,10 +145,10 @@ export function Dashboard() {
               size={80}
             />
           </div>
-          <h2 className="mb-2 text-2xl font-extrabold text-slate-700 dark:text-slate-200">
+          <h2 className="mb-2 text-2xl font-extrabold text-slate-800 dark:text-slate-100">
             عـــــبده النــــيمان 👀
           </h2>
-          <p className="mb-6 text-sm text-slate-400 dark:text-slate-500">
+          <p className="mb-6 text-sm text-text-muted-light dark:text-text-muted-dark">
             Shift ends in 30 minutes, let's do some work?
           </p>
           <button
@@ -150,7 +167,6 @@ export function Dashboard() {
   // Single counter layout — toolbar stays visible
   if (settings.layout === "single" && sorted.length > 0) {
     const current = sorted[Math.min(singleIndex, sorted.length - 1)];
-    void setSingleIndex;
 
     return (
       <>
@@ -173,9 +189,12 @@ export function Dashboard() {
                 value={current.id}
                 onChange={(e) => {
                   const idx = sorted.findIndex((c) => c.id === e.target.value);
-                  if (idx >= 0) setSingleIndex(idx);
+                  if (idx >= 0) {
+                    setSingleIndex(idx);
+                    selectCounter(sorted[idx]?.id ?? null);
+                  }
                 }}
-                className="rounded-xl border border-slate-200 bg-white px-3 py-2 text-sm font-bold text-slate-700 outline-none focus:border-main dark:border-slate-700 dark:bg-background dark:text-slate-200 hover:brightness-110"
+                className="rounded-xl border border-border-light bg-surface-light px-3 py-2 text-sm font-bold text-slate-800 outline-none focus:border-main hover:brightness-[0.98] dark:border-border-dark dark:bg-surface-dark dark:text-slate-100 dark:hover:brightness-110"
               >
                 {sorted.map((c) => (
                   <option key={c.id} value={c.id}>
@@ -183,7 +202,7 @@ export function Dashboard() {
                   </option>
                 ))}
               </select>
-              <span className="text-xs font-bold text-slate-400 dark:text-slate-500">
+              <span className="text-xs font-bold text-text-muted-light dark:text-text-muted-dark">
                 {singleIndex + 1} / {sorted.length}
               </span>
             </div>

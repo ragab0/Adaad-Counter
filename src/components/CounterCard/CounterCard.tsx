@@ -124,21 +124,15 @@ export function CounterCard({
     >
       <div
         onClick={handleClick}
-        style={{
-          backgroundColor: "#33333d",
-          borderRadius: "0.375rem",
-          boxShadow:
-            "0 10px 15px -3px rgba(0, 0, 0, .1), 0 4px 6px -2px rgba(0, 0, 0, .05)",
-        }}
-        className={`group relative flex flex-col transition hover:brightness-110 ${
-          isSelected ? "ring-2 ring-main/40" : ""
+        className={`group relative flex flex-col overflow-hidden rounded-2xl border border-border-light bg-surface-light shadow-card transition-all hover:shadow-card-hover hover:-translate-y-0.5 dark:border-border-dark dark:bg-surface-dark dark:shadow-card-dark dark:hover:shadow-[0_14px_40px_-12px_rgba(0,0,0,0.5)] ${
+          isSelected ? "ring-2 ring-brand-700/25 dark:ring-brand-300/20" : ""
         } ${isDragging ? "cursor-grabbing" : "cursor-pointer"}`}
       >
         {/* Drag handle */}
         <button
           {...listeners}
           onClick={(e) => e.stopPropagation()}
-          className="absolute left-1 top-1/2 -translate-y-1/2 cursor-grab p-1 text-slate-500 opacity-0 transition hover:text-slate-300 group-hover:opacity-100 active:cursor-grabbing"
+          className="absolute left-1 top-1/2 -translate-y-1/2 cursor-grab p-1 text-slate-400 opacity-0 transition hover:text-slate-600 group-hover:opacity-100 active:cursor-grabbing dark:text-slate-500 dark:hover:text-slate-300"
           aria-label="Drag to reorder"
         >
           <GripVertical className="h-5 w-5" />
@@ -153,7 +147,7 @@ export function CounterCard({
                 e.stopPropagation();
                 setMenuOpen((v) => !v);
               }}
-              className="rounded-lg p-2 text-slate-400 transition hover:bg-slate-700/50 hover:text-slate-200 "
+              className="rounded-lg p-2 text-text-muted-light transition hover:bg-surface-hover-light hover:text-stone-700 dark:text-text-muted-dark dark:hover:bg-surface-hover-dark dark:hover:text-slate-100"
               aria-label="Counter settings"
             >
               <MoreVertical className="h-5 w-5" />
@@ -190,7 +184,7 @@ export function CounterCard({
                     if (e.key === "Enter") saveName();
                     if (e.key === "Escape") cancelEdit();
                   }}
-                  className="rounded-md w-full flex-1 border-none bg-[#2a2a32] p-3 text-center text-base font-bold text-slate-100 outline-none focus:ring-2 focus:ring-main/30"
+                  className="rounded-md w-full flex-1 border-none bg-surface-hover-light p-3 text-center text-base font-bold text-slate-800 outline-none focus:ring-2 focus:ring-main/30 dark:bg-surface-hover-dark dark:text-slate-100"
                 />
                 <button
                   onClick={(e) => {
@@ -207,7 +201,7 @@ export function CounterCard({
                     e.stopPropagation();
                     cancelEdit();
                   }}
-                  className="rounded-lg bg-slate-600 p-3 text-white transition hover:bg-slate-500"
+                  className="rounded-lg bg-btn-secondary-light p-3 text-stone-700 transition hover:bg-btn-secondary-hover-light dark:bg-btn-secondary-dark dark:text-slate-200 dark:hover:bg-btn-secondary-hover-dark"
                   aria-label="Cancel"
                 >
                   <X className="h-4 w-4" />
@@ -215,14 +209,14 @@ export function CounterCard({
               </div>
             ) : (
               <button
-                className="w-fit mx-auto p-3 ps-0 flex justify-center items-center gap-2 hover:bg-[#292932] [&:hover>svg]:animate-spin"
+                className="w-fit mx-auto p-3 ps-0 flex justify-center items-center gap-2 rounded-xl transition hover:bg-surface-hover-light [&:hover>svg]:animate-spin dark:hover:bg-surface-hover-dark"
                 onClick={(e) => {
                   e.stopPropagation();
                   setEditingName(true);
                   setNameDraft(counter.name);
                 }}
               >
-                <h3 className="truncate ms-6 text-base font-bold text-slate-200">
+                <h3 className="truncate ms-6 text-base font-bold text-slate-800 dark:text-slate-100">
                   {counter.name}
                 </h3>
                 <Pencil className="h-3.5 w-3.5" />
@@ -236,7 +230,11 @@ export function CounterCard({
           <span
             className={`tabular-nums text-[180px] lg:text-[230px] font-extrabold leading-[200px] lg:leading-[280px] text-main ${
               pop === "up" ? "animate-pop" : ""
-            } ${pop === "down" ? "animate-shake text-red-400" : ""}`}
+            } ${
+              pop === "down"
+                ? "animate-shake text-red-500 dark:text-red-400"
+                : ""
+            }`}
           >
             {counter.value.toLocaleString("en-US")}
           </span>
@@ -249,7 +247,7 @@ export function CounterCard({
               e.stopPropagation();
               handleDecrement();
             }}
-            className="flex flex-1 items-center justify-center gap-1.5 rounded-lg border border-slate-600 bg-slate-700/50 py-4 text-slate-300 transition hover:bg-slate-700 active:scale-95"
+            className="flex flex-1 items-center justify-center gap-1.5 rounded-xl border border-border-light bg-btn-secondary-light py-4 text-stone-700 transition hover:bg-btn-secondary-hover-light active:scale-95 dark:border-border-dark dark:bg-btn-secondary-dark dark:text-slate-200 dark:hover:bg-btn-secondary-hover-dark"
             aria-label={`Decrement by ${counter.decrement}`}
           >
             <Minus className="h-7 w-7" />
@@ -262,7 +260,7 @@ export function CounterCard({
               e.stopPropagation();
               handleIncrement();
             }}
-            className="flex flex-[2] items-center justify-center gap-1.5 rounded-lg bg-main py-4 text-lg font-bold text-white transition hover:brightness-110 active:scale-95"
+            className="flex flex-[2] items-center justify-center gap-1.5 rounded-xl bg-main py-4 text-lg font-bold text-white shadow-sm transition hover:brightness-110 active:scale-95"
             aria-label={`Increment by ${counter.increment}`}
           >
             <Plus className="h-7 w-7" />

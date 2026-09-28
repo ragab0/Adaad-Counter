@@ -13,7 +13,7 @@ export function LayoutSelector() {
   const { settings, setLayout } = useCounterContext();
 
   return (
-    <div className="flex items-center gap-1 rounded-xl border border-slate-200 bg-white p-1 dark:border-background/90 dark:bg-background">
+    <div className="flex items-center gap-1 rounded-xl border border-border-light bg-surface-light p-1 dark:border-border-dark dark:bg-surface-dark">
       {LAYOUTS.map((l) => {
         const Icon = l.icon;
         const active = settings.layout === l.value;
@@ -24,7 +24,7 @@ export function LayoutSelector() {
             className={`rounded-lg p-2 transition ${
               active
                 ? "bg-brand-600 text-white shadow-sm"
-                : "text-slate-500 hover:bg-slate-50 dark:text-slate-400 dark:hover:bg-slate-700"
+                : "text-text-muted-light hover:bg-surface-hover-light hover:text-stone-700 dark:text-text-muted-dark dark:hover:bg-surface-hover-dark dark:hover:text-slate-100"
             }`}
             aria-pressed={active}
             title={l.label}

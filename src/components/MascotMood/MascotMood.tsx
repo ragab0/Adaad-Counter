@@ -21,7 +21,7 @@ export function MascotMood() {
         showSleepState={true}
         idleAnimation={true}
       />
-      <p className="text-sm font-bold text-slate-400 dark:text-slate-500">
+      <p className="text-sm font-bold text-text-muted-light dark:text-text-muted-dark">
         {mascot.personalityLabel}
       </p>
     </div>
