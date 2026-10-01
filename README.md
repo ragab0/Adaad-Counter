@@ -8,13 +8,21 @@ It gives us a quick place to create counters, track progress, and see where we a
 
 ## 🖼️ Screenshots
 
-### Home
+### Home V1
 
 ![Adaad Home](./src/constants/imgs/Adaad1.png)
 
-### About
+### Home V2
+
+![Adaad2 Home](./src/constants/imgs/Adaad2_Home.png)
+
+### About V1
 
 ![Adaad About](./src/constants/imgs/Adaad2.png)
+
+### About V2
+
+![Adaad2 About](./src/constants/imgs/Adaad2_About.png)
 
 ## 😂 The Characters
 
