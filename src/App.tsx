@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { HashRouter, Routes, Route } from "react-router-dom";
+import { HashRouter, Routes, Route, useLocation } from "react-router-dom";
 import { CounterProvider } from "@/context/CounterContext";
 import { CharacterReactionProvider } from "@/context/CharacterReactionContext";
 import { Header } from "@/components/Header/Header";
@@ -9,8 +9,10 @@ import { About } from "@/pages/About/About";
 import { GeneralSettings } from "@/components/GeneralSettings/GeneralSettings";
 import { MascotMood } from "@/components/MascotMood/MascotMood";
 import { AnimatedBackground } from "@/components/AnimatedBackground/AnimatedBackground";
+import { QuranReader } from "@/pages/QuranReader/QuranReader";
+import { useQuranShortcut, QURAN_READER_ROUTE } from "@/hooks/useQuranShortcut";
 
-function AppContent() {
+function MainAppLayout() {
   const [settingsOpen, setSettingsOpen] = useState(false);
 
   return (
@@ -35,12 +37,29 @@ function AppContent() {
   );
 }
 
+function AppRouter() {
+  const location = useLocation();
+  useQuranShortcut();
+
+  const isQuranReader = location.pathname === QURAN_READER_ROUTE;
+
+  if (isQuranReader) {
+    return (
+      <Routes>
+        <Route path={QURAN_READER_ROUTE} element={<QuranReader />} />
+      </Routes>
+    );
+  }
+
+  return <MainAppLayout />;
+}
+
 export default function App() {
   return (
     <CounterProvider>
       <CharacterReactionProvider>
         <HashRouter>
-          <AppContent />
+          <AppRouter />
         </HashRouter>
       </CharacterReactionProvider>
     </CounterProvider>
